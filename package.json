@@ -21,11 +21,23 @@
     "lowlight",
     "highlightjs"
   ],
-  "type": "module",
+  "include": [
+    "index.d.ts",
+    "./src/**/*"
+  ],
+  "files": [
+    "src",
+    "dist",
+    "index.d.ts"
+  ],
+  "types": "index.d.ts",
   "author": "Feroz Faiz",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nartix/tiptap-inline-code-highlight/issues"
   },
-  "homepage": "https://github.com/nartix/tiptap-inline-code-highlight#readme"
+  "homepage": "https://github.com/nartix/tiptap-inline-code-highlight#readme",
+  "dependencies": {
+    "@tiptap/core": "^2.2.4"
+  }
 }
