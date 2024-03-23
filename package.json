@@ -1,0 +1,31 @@
+{
+  "name": "tiptap-inline-code-highlight",
+  "version": "1.0.0",
+  "description": "Inlince code highlight extension for Tiptap editor.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nartix/tiptap-inline-code-highlight.git"
+  },
+  "keywords": [
+    "inline",
+    "code",
+    "highlight",
+    "extension",
+    "tiptap",
+    "prosemirror",
+    "pluggin",
+    "lowlight",
+    "highlightjs"
+  ],
+  "type": "module",
+  "author": "Feroz Faiz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nartix/tiptap-inline-code-highlight/issues"
+  },
+  "homepage": "https://github.com/nartix/tiptap-inline-code-highlight#readme"
+}
