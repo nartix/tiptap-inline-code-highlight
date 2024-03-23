@@ -1,7 +1,7 @@
 {
-  "name": "tiptap-inline-code-highlight",
-  "version": "1.0.2",
-  "description": "Inlince code highlight extension for Tiptap editor.",
+  "name": "@nartix/tiptap-inline-code-highlight",
+  "version": "1.0.3",
+  "description": "Inline code highlight extension for Tiptap editor.",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nartix/tiptap-inline-code-highlight.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "inline",
@@ -38,6 +41,6 @@
   },
   "homepage": "https://github.com/nartix/tiptap-inline-code-highlight#readme",
   "dependencies": {
-    "@tiptap/core": "^2.2.4"
+    "@tiptap/core": "^2.0.0"
   }
 }
