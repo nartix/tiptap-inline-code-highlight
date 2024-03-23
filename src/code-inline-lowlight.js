@@ -84,7 +84,7 @@ export const CodeInlineLowlight = Extension.create({
 
   addProseMirrorPlugins() {
     if (!['highlight', 'highlightAuto', 'listLanguages'].every((api) => isFunction(this.options.lowlight[api]))) {
-      throw Error('You should provide an instance of lowlight to use the code-inline-lowlight extension');
+      throw Error('You should provide an instance of lowlight to use the tiptap-code-inline-highlight extension');
     }
     const pluginKey = new PluginKey('codeInlineLowlight');
     return [
