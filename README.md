@@ -20,4 +20,6 @@ const editor = Editor({
 });
 ```
 
+## Demo
+
 ![Description of image](image.png)
