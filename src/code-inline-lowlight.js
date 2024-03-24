@@ -31,7 +31,6 @@ function getDecorations({ doc, name, lowlight }) {
 
   findInlineCode(doc, name).forEach((block) => {
     let from = block.from;
-    const to = block.to;
 
     const nodes = getHighlightNodes(lowlight.highlightAuto(block.text));
 
@@ -60,7 +59,7 @@ function findInlineCode(doc, markType) {
           from: pos,
           to: pos + node.nodeSize,
           text: node.text,
-          node: mark,
+          // node: mark,
         });
       }
     });
@@ -78,15 +77,14 @@ export const CodeInlineLowlight = Extension.create({
   addOptions() {
     return {
       lowlight: {},
-      defaultLanguage: null,
     };
   },
 
   addProseMirrorPlugins() {
     if (!['highlight', 'highlightAuto', 'listLanguages'].every((api) => isFunction(this.options.lowlight[api]))) {
-      throw Error('You should provide an instance of lowlight to use the tiptap-code-inline-highlight extension');
+      throw Error('You should provide an instance of lowlight to use the @nartix/tiptap-code-inline-highlight extension');
     }
-    const pluginKey = new PluginKey('codeInlineLowlight');
+    const pluginKey = new PluginKey(this.name);
     return [
       new Plugin({
         key: pluginKey,
@@ -117,7 +115,6 @@ export const CodeInlineLowlight = Extension.create({
                 lowlight: this.options.lowlight,
               });
             }
-
             return set.map(tr.mapping, tr.doc);
           },
         },
