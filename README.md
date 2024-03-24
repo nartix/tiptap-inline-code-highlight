@@ -8,9 +8,15 @@ This package is a port of `@tiptap/extension-code-block-lowlight` but for highli
 npm install @nartix/tiptap-inline-code-highlight
 ```
 
+## Import the extension:
+
 ```javascript
 import CodeInlineLowlight from '@nartix/tiptap-inline-code-highlight';
+```
 
+## Add it to your Tiptap editor:
+
+```javascript
 const editor = Editor({
   extensions: [
     CodeInlineLowlight.configure({
