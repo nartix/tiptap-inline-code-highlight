@@ -89,9 +89,12 @@ export const CodeInlineLowlight = Extension.create({
       new Plugin({
         key: pluginKey,
         state: {
-          init(_, { doc }) {
-            return DecorationSet.empty;
-          },
+          init: (_, { doc }) =>
+            getDecorations({
+              doc: doc,
+              name: CODE_MARK_TYPE,
+              lowlight: this.options.lowlight,
+            }),
           apply: (tr, set, oldState, newState) => {
             const oldMarks = findInlineCode(oldState.doc, CODE_MARK_TYPE);
             const newMarks = findInlineCode(newState.doc, CODE_MARK_TYPE);
