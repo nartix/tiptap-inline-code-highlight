@@ -9,7 +9,7 @@ npm install @nartix/tiptap-inline-code-highlight
 ```
 
 ```javascript
-import { CodeInlineLowlight } from 'tiptap-inline-code-highlight';
+import { CodeInlineLowlight } from '@nartix/tiptap-inline-code-highlight';
 
 const editor = Editor({
   extensions: [
