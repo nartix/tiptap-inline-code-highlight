@@ -2,19 +2,19 @@
 
 This package is a port of `@tiptap/extension-code-block-lowlight` but for highlighting inline codes in the TipTap editor. It uses Lowlight to highlight codes.
 
-## Usage
+### Usage
 
 ```bash
 npm install @nartix/tiptap-inline-code-highlight
 ```
 
-## Import the extension:
+### Import the extension:
 
 ```javascript
 import CodeInlineLowlight from '@nartix/tiptap-inline-code-highlight';
 ```
 
-## Add it to your Tiptap editor:
+### Add it to your Tiptap editor:
 
 ```javascript
 const editor = Editor({
@@ -26,6 +26,6 @@ const editor = Editor({
 });
 ```
 
-## Demo
+### Demo
 
 ![Description of image](image.png)
