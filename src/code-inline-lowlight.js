@@ -35,13 +35,16 @@ function getDecorations({ doc, name, lowlight }) {
     const nodes = getHighlightNodes(lowlight.highlightAuto(block.text));
 
     parseNodes(nodes).forEach((node) => {
+      const to = from + node.text.length;
+
       if (node.classes.length) {
-        const decoration = Decoration.inline(from, from + node.text.length, {
+        const decoration = Decoration.inline(from, to, {
           class: node.classes.join(' '),
         });
 
         decorations.push(decoration);
       }
+
       from += node.text.length;
     });
   });
