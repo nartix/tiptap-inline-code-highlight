@@ -28,4 +28,4 @@ const editor = new Editor({
 
 ## Demo
 
-![Demo of Tiptap inline code highligh](image.png)
+![Demo of Tiptap inline code highlight](image.png)
