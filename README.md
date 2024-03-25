@@ -17,7 +17,7 @@ import CodeInlineLowlight from '@nartix/tiptap-inline-code-highlight';
 ## Add it to your Tiptap editor
 
 ```javascript
-const editor = Editor({
+const editor = new Editor({
   extensions: [
     CodeInlineLowlight.configure({
       lowlight,
