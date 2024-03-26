@@ -45,7 +45,7 @@ function getDecorations({ doc, name, lowlight }) {
         decorations.push(decoration);
       }
 
-      from += node.text.length;
+      from = to;
     });
   });
 
@@ -62,7 +62,7 @@ function findInlineCode(doc, markType) {
           from: pos,
           to: pos + node.nodeSize,
           text: node.text,
-          // node: mark,
+          // mark: mark,
         });
       }
     });
@@ -100,7 +100,12 @@ export const CodeInlineLowlight = Extension.create({
       new Plugin({
         key: pluginKey,
         state: {
-          init: (_, { doc }) => getDecorations({ doc, name: CODE_MARK_TYPE, lowlight: this.options.lowlight }),
+          init: (_, { doc }) =>
+            getDecorations({
+              doc,
+              name: CODE_MARK_TYPE,
+              lowlight: this.options.lowlight,
+            }),
           apply: (tr, set, oldState, newState) => {
             const oldMarks = findInlineCode(oldState.doc, CODE_MARK_TYPE);
             const newMarks = findInlineCode(newState.doc, CODE_MARK_TYPE);
@@ -118,7 +123,11 @@ export const CodeInlineLowlight = Extension.create({
                   );
                 }))
             ) {
-              return getDecorations({ doc: tr.doc, name: CODE_MARK_TYPE, lowlight: this.options.lowlight });
+              return getDecorations({
+                doc: tr.doc,
+                name: CODE_MARK_TYPE,
+                lowlight: this.options.lowlight,
+              });
             }
             return set.map(tr.mapping, tr.doc);
           },
