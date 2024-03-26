@@ -74,6 +74,11 @@ function isFunction(param) {
   return typeof param === 'function';
 }
 
+function validateLowlight(lowlight) {
+  const requiredMethods = ['highlight', 'highlightAuto', 'listLanguages'];
+  return requiredMethods.every((api) => isFunction(lowlight[api]));
+}
+
 export const CodeInlineLowlight = Extension.create({
   name: 'codeInlineLowlight',
 
@@ -84,20 +89,18 @@ export const CodeInlineLowlight = Extension.create({
   },
 
   addProseMirrorPlugins() {
-    if (!['highlight', 'highlightAuto', 'listLanguages'].every((api) => isFunction(this.options.lowlight[api]))) {
-      throw Error('You should provide an instance of lowlight to use the @nartix/tiptap-code-inline-highlight extension');
+    if (!validateLowlight(this.options.lowlight)) {
+      console.warn(
+        'You should provide an instance of lowlight to use the @nartix/tiptap-code-inline-highlight extension. No syntax highlighting is applied.'
+      );
+      return [];
     }
     const pluginKey = new PluginKey(this.name);
     return [
       new Plugin({
         key: pluginKey,
         state: {
-          init: (_, { doc }) =>
-            getDecorations({
-              doc: doc,
-              name: CODE_MARK_TYPE,
-              lowlight: this.options.lowlight,
-            }),
+          init: (_, { doc }) => getDecorations({ doc, name: CODE_MARK_TYPE, lowlight: this.options.lowlight }),
           apply: (tr, set, oldState, newState) => {
             const oldMarks = findInlineCode(oldState.doc, CODE_MARK_TYPE);
             const newMarks = findInlineCode(newState.doc, CODE_MARK_TYPE);
@@ -115,11 +118,7 @@ export const CodeInlineLowlight = Extension.create({
                   );
                 }))
             ) {
-              return getDecorations({
-                doc: tr.doc,
-                name: CODE_MARK_TYPE,
-                lowlight: this.options.lowlight,
-              });
+              return getDecorations({ doc: tr.doc, name: CODE_MARK_TYPE, lowlight: this.options.lowlight });
             }
             return set.map(tr.mapping, tr.doc);
           },
