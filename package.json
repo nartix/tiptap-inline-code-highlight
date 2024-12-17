@@ -40,7 +40,7 @@
     "url": "https://github.com/nartix/tiptap-inline-code-highlight/issues"
   },
   "homepage": "https://github.com/nartix/tiptap-inline-code-highlight#readme",
-  "dependencies": {
+  "peerDependencies": {
     "@tiptap/core": "^2.0.0"
   }
 }
