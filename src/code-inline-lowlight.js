@@ -13,11 +13,9 @@ function parseNodes(nodes, className = []) {
   return nodes
     .map((node) => {
       const classes = [...className, ...(node.properties ? node.properties.className : [])];
-
       if (node.children) {
         return parseNodes(node.children, classes);
       }
-
       return {
         text: node.value,
         classes,
@@ -28,27 +26,20 @@ function parseNodes(nodes, className = []) {
 
 function getDecorations({ doc, name, lowlight }) {
   const decorations = [];
-
   findInlineCode(doc, name).forEach((block) => {
     let from = block.from;
-
     const nodes = getHighlightNodes(lowlight.highlightAuto(block.text));
-
     parseNodes(nodes).forEach((node) => {
       const to = from + node.text.length;
-
       if (node.classes.length) {
         const decoration = Decoration.inline(from, to, {
           class: node.classes.join(' '),
         });
-
         decorations.push(decoration);
       }
-
       from = to;
     });
   });
-
   return DecorationSet.create(doc, decorations);
 }
 
@@ -81,13 +72,11 @@ function validateLowlight(lowlight) {
 
 export const CodeInlineLowlight = Extension.create({
   name: 'codeInlineLowlight',
-
   addOptions() {
     return {
       lowlight: {},
     };
   },
-
   addProseMirrorPlugins() {
     if (!validateLowlight(this.options.lowlight)) {
       console.warn(
